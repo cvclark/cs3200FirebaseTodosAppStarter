@@ -14,10 +14,12 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.compose.*
 import com.usu.firebasetodosapplication.ui.screens.*
+import com.usu.firebasetodosapplication.ui.viewmodels.RootNavigationViewModel
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
 
@@ -29,6 +31,7 @@ fun RootNavigation() {
     val currentDestination = navBackStackEntry?.destination
     val scaffoldState = rememberScaffoldState()
     val scope = rememberCoroutineScope()
+    val viewModel: RootNavigationViewModel = viewModel()
 
     Scaffold(
         scaffoldState = scaffoldState,
@@ -51,7 +54,7 @@ fun RootNavigation() {
         drawerContent = {
             if (currentDestination?.hierarchy?.none { it.route == Routes.launchNavigation.route || it.route == Routes.splashScreen.route } == true) {
                 DropdownMenuItem(onClick = {
-                    // TODO Log the user out
+                    viewModel.signOutUser()
                     scope.launch {
                         scaffoldState.drawerState.snapTo(DrawerValue.Closed)
                     }

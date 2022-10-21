@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "607292130187",
+    "project_id": "cs3200tabletoprpg",
+    "storage_bucket": "cs3200tabletoprpg.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:607292130187:android:97caa15cf3bfef590ee58e",
+        "android_client_info": {
+          "package_name": "com.usu.firebasetodosapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "607292130187-2q40vq8ppfits6vnnsoek9hmem7qpprf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA3ooM6lEXk9CGYYgd5u38fku5nYE5fm_g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "607292130187-2q40vq8ppfits6vnnsoek9hmem7qpprf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -28,12 +28,17 @@ import kotlinx.coroutines.launch
 import java.lang.Exception
 
 @Composable
-fun TodosModificationScreen(navHostController: NavHostController) {
+fun TodosModificationScreen(navHostController: NavHostController, id: String?) {
     val viewModel: TodosModificationViewModel = viewModel()
     val state = viewModel.uiState
     val scope = rememberCoroutineScope()
     
+    LaunchedEffect(true) {
+        viewModel.setupInitialState(id)
+    }
+
     LaunchedEffect(state.saveSuccess) {
+        println(id)
         if (state.saveSuccess) {
             navHostController.popBackStack()
         }

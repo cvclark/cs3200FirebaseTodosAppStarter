@@ -18,6 +18,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.compose.*
+import androidx.navigation.navArgument
 import com.usu.firebasetodosapplication.ui.screens.*
 import com.usu.firebasetodosapplication.ui.viewmodels.RootNavigationViewModel
 import kotlinx.coroutines.coroutineScope
@@ -87,7 +88,11 @@ fun RootNavigation() {
                 composable(route = Routes.signUp.route) { SignUpScreen(navController) }
             }
             navigation(route = Routes.todosNavigation.route, startDestination = Routes.todos.route) {
-                composable(route = Routes.editTodo.route) { TodosModificationScreen(navController) }
+                composable(
+                    route = "edittodo?id={id}",
+                    arguments = listOf(navArgument("id") { defaultValue = "new" })
+                ) { navBackStackEntry ->
+                    TodosModificationScreen(navController, navBackStackEntry.arguments?.get("id").toString()) }
                 composable(route = Routes.todos.route) { TodosScreen(navController) }
             }
             composable(route = Routes.splashScreen.route) { SplashScreen(navController) }

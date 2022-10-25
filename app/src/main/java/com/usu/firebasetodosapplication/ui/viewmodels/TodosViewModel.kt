@@ -1,8 +1,10 @@
 package com.usu.firebasetodosapplication.ui.viewmodels
 
 import android.app.Application
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import androidx.lifecycle.AndroidViewModel
 import com.usu.firebasetodosapplication.ui.models.Todo
 import com.usu.firebasetodosapplication.ui.repositories.TodosRepository
@@ -10,6 +12,7 @@ import com.usu.firebasetodosapplication.ui.repositories.TodosRepository
 class TodosScreenState {
     val _todos = mutableStateListOf<Todo>()
     val todos: List<Todo> get() = _todos
+    var showHigherPriorityItemsFirst by mutableStateOf(false)
 }
 
 class TodosViewModel(application: Application): AndroidViewModel(application) {

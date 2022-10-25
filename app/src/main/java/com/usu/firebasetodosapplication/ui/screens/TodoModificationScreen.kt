@@ -23,6 +23,7 @@ import com.usu.firebasetodosapplication.ui.components.FormField
 import com.usu.firebasetodosapplication.ui.models.Todo
 import com.usu.firebasetodosapplication.ui.viewmodels.TodosModificationViewModel
 import com.usu.firebasetodosapplication.ui.viewmodels.TodosViewModel
+import com.usu.firebasetodosapplication.util.Analytics
 import com.usu.firebasetodosapplication.util.priorityText
 import kotlinx.coroutines.launch
 import java.lang.Exception
@@ -35,6 +36,10 @@ fun TodosModificationScreen(navHostController: NavHostController, id: String?) {
     
     LaunchedEffect(true) {
         viewModel.setupInitialState(id)
+    }
+
+    LaunchedEffect(true) {
+        Analytics.logScreenVisit("Todo Modification")
     }
 
     LaunchedEffect(state.saveSuccess) {

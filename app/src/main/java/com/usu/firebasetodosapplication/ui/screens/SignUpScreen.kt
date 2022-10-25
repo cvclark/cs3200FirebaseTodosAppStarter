@@ -15,6 +15,7 @@ import androidx.navigation.NavHostController
 import com.usu.firebasetodosapplication.ui.components.FormField
 import com.usu.firebasetodosapplication.ui.navigation.Routes
 import com.usu.firebasetodosapplication.ui.viewmodels.SignUpViewModel
+import com.usu.firebasetodosapplication.util.Analytics
 import kotlinx.coroutines.launch
 
 @Composable
@@ -22,6 +23,9 @@ fun SignUpScreen(navHostController: NavHostController) {
     val viewModel: SignUpViewModel = viewModel()
     val scope = rememberCoroutineScope()
     val state = viewModel.uiState
+    LaunchedEffect(true) {
+        Analytics.logScreenVisit("Sign Up")
+    }
     LaunchedEffect(state.signUpSuccess) {
         if (state.signUpSuccess) {
             navHostController.navigate(Routes.todosNavigation.route) {
